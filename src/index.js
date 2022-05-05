@@ -19,6 +19,28 @@ before.innerHTML = JSON.stringify(companiesData, null, 2);
 //TODO: Create a new array with just elements of a certain state.
 //TODO: Create buttons for each record.
 //functions are here
-const manipulatedData = [];
 
-after.innerHTML = JSON.stringify(manipulatedData, null, 2);
+const forEachFunction = (company) => {
+// delete company.City;
+const btn = document.createElement("button");
+btn.type = "button";
+btn.innerHTML = company.Company;
+btn.className = "btn btn-primary";
+after.appendChild(btn);
+};
+
+const filterFunction = (company) => company.fieldData.State === "TX";
+const mapFunction = (company) => {
+  const newObj = {
+    State: company.fieldData.State,
+    City: company.fieldData.City,
+    Company: company.fieldData.CompanyName,
+    ID: company.fieldData.Id,
+  };
+  return newObj;
+};
+
+const manipulatedData = companiesData.filter(filterFunction).map(mapFunction)
+manipulatedData.forEach(forEachFunction);
+// after.innerHTML = JSON.stringify(manipulatedData, null, 2);
+
