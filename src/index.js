@@ -24,7 +24,7 @@ const forEachFunction = (company) => {
 // delete company.City;
 const btn = document.createElement("button");
 btn.type = "button";
-btn.innerHTML = company.State;
+btn.innerHTML = company.Company;
 btn.className = "btn btn-primary";
 after.appendChild(btn);
 };
