@@ -24,18 +24,27 @@ const forEachFunction = (company) => {
 // delete company.City;
 const btn = document.createElement("button");
 btn.type = "button";
-btn.innerHTML = company.Company;
+btn.innerHTML = company.State;
 btn.className = "btn btn-primary";
 after.appendChild(btn);
 };
 
-const filterFunction = (company) => company.fieldData.State === "TX";
+const filterFunction = (company) =>
+  company.fieldData.State === "TX" ||
+  company.fieldData.State === "CA" ||
+  company.fieldData.State === "NY" ||
+  company.fieldData.State === "WA" ||
+  company.fieldData.State === "IL" ||
+  company.fieldData.State === "SD";
+ 
 const mapFunction = (company) => {
   const newObj = {
     State: company.fieldData.State,
     City: company.fieldData.City,
+    StreetAddress: company.fieldData.StreetAddress,
     Company: company.fieldData.CompanyName,
     ID: company.fieldData.Id,
+    ZIP: company.fieldData.Zip,
   };
   return newObj;
 };
@@ -43,4 +52,3 @@ const mapFunction = (company) => {
 const manipulatedData = companiesData.filter(filterFunction).map(mapFunction)
 manipulatedData.forEach(forEachFunction);
 // after.innerHTML = JSON.stringify(manipulatedData, null, 2);
-
