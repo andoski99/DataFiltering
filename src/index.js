@@ -36,7 +36,7 @@ const createButton = (company) => {
 const btn = document.createElement("button");
 btn.type = "button";
 btn.innerHTML = company;
-btn.className = "col-12 m-1 btn btn-primary";
+btn.className = "col-12 p-2 m-1 btn btn-primary";
 return btn;
 // after.appendChild(btn);
 };
