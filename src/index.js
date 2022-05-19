@@ -18,9 +18,22 @@ const createParent = (state) => {
 return parent;
 }
 //TODO: Show the state in each parent element title
+
+
 //TODO: get data (company) for each state
+
 //TODO: create button for each company
+const createButton = (company) => {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.innerHTML = company;
+  btn.className = "col-12 p-2 m-1 btn btn-primary";
+  return btn;
+  // after.appendChild(btn);
+};// after.appendChild(btn);
+
 //TODO: append button to each parent element
+
 //TODO: append the parent element to the after div
 
 // const filterFunction = (company,state) => company.fieldData.State === state;
@@ -32,24 +45,17 @@ const filterForState = (array, state) => {
 const checkThis = filterForState(companiesData, "TX");
 console.log(checkThis);
 
-const createButton = (company) => {
-const btn = document.createElement("button");
-btn.type = "button";
-btn.innerHTML = company;
-btn.className = "col-12 p-2 m-1 btn btn-primary";
-return btn;
-// after.appendChild(btn);
-};
-
 //Ultimate Function
 uniqueStates.forEach((state) => {
   const stateData = filterForState(companiesData, state);
   const parentElement = createParent(state);
+//TODO: append button to each parent element
   stateData.forEach((company) => {
     const CompanyName = company.fieldData.CompanyName;
     const btn = createButton(CompanyName);
     parentElement.appendChild(btn);
   });
+  //TODO: append the parent element to the after div
   console.log(stateData);
   after.appendChild(parentElement);
 });
